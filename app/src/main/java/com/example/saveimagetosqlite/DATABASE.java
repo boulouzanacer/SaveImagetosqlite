@@ -87,7 +87,12 @@ public class DATABASE extends SQLiteOpenHelper {
                 images.add(image);
             } while (cursor.moveToNext());
         }
+        cursor.close();
         return images;
     }
 
+    public long getDatabaseSize(){
+        File f = mContext.getDatabasePath(DATABASE_NAME);
+        return  f.length();
+    }
 }

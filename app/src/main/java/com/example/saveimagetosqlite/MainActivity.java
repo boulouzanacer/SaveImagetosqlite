@@ -57,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
 
     protected void refreshGrid(){
         images = controller.select_image_from_database("SELECT IMAGE_ID, IMAGE FROM Image");
+
+        Double datasize = (double)(controller.getDatabaseSize());
+        getSupportActionBar().setSubtitle(images.size() + " images : " +  String.format("%.2f", datasize / 1048576.00) + " MB");
+
         // Create an object of CustomAdapter and set Adapter to GirdView
         GridViewAdapter gridViewAdapter = new GridViewAdapter(getApplicationContext(), images);
         simpleGrid.setAdapter(gridViewAdapter);
@@ -69,8 +73,7 @@ public class MainActivity extends AppCompatActivity {
             Uri selectedImage = data.getData();
             String[] filePathColumn = { MediaStore.Images.Media.DATA };
 
-            Cursor cursor = getContentResolver().query(selectedImage,
-                    filePathColumn, null, null, null);
+            Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
             cursor.moveToFirst();
 
             int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
