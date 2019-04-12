@@ -11,6 +11,9 @@
     <GridView
         android:id="@+id/gridview"
         android:numColumns="3"
+        android:horizontalSpacing="30sp"
+        android:verticalSpacing="30sp"
+        android:background="@android:color/darker_gray"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
