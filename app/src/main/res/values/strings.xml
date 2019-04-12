@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Save Image to sqlite</string>
+    <string name="action_settings">Settings</string>
+</resources>
